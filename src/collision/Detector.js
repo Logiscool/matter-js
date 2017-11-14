@@ -35,8 +35,10 @@ var Bounds = require('../geometry/Bounds');
             var bodyA = broadphasePairs[i][0], 
                 bodyB = broadphasePairs[i][1];
 
-            if ((bodyA.isStatic || bodyA.isSleeping) && (bodyB.isStatic || bodyB.isSleeping))
-                continue;
+            // As we need collisions between sleeping objects and static objects can be moved, 
+            // we must disable this check.
+            //if ((bodyA.isStatic || bodyA.isSleeping) && (bodyB.isStatic || bodyB.isSleeping))
+            //    continue;
             
             if (!Detector.canCollide(bodyA.collisionFilter, bodyB.collisionFilter))
                 continue;
