@@ -1,5 +1,5 @@
 /**
-* matter-js 0.13.0 by @liabru 2017-07-06
+* @logiscool/matter-js 0.14.0 by @liabru 2017-11-14
 * http://brm.io/matter-js/
 * License MIT
 */
@@ -2097,8 +2097,10 @@ var Bounds = _dereq_('../geometry/Bounds');
             var bodyA = broadphasePairs[i][0], 
                 bodyB = broadphasePairs[i][1];
 
-            if ((bodyA.isStatic || bodyA.isSleeping) && (bodyB.isStatic || bodyB.isSleeping))
-                continue;
+            // As we need collisions between sleeping objects and static objects can be moved, 
+            // we must disable this check.
+            //if ((bodyA.isStatic || bodyA.isSleeping) && (bodyB.isStatic || bodyB.isSleeping))
+            //    continue;
             
             if (!Detector.canCollide(bodyA.collisionFilter, bodyB.collisionFilter))
                 continue;
@@ -5386,7 +5388,7 @@ var Common = _dereq_('./Common');
      * @readOnly
      * @type {String}
      */
-    Matter.version = '0.13.0';
+    Matter.version = '0.14.0';
 
     /**
      * A list of plugin dependencies to be installed. These are normally set and installed through `Matter.use`.
